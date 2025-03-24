@@ -10,9 +10,9 @@ if (!productId) {
     throw new Error("Product ID not found.");
 }
 
-fetch(`/api/getProduct?id=${productId}`, { // Replace with your actual API URL
+fetch(`/api/getProduct?id=${productId}`, { 
     headers: {
-        "x-functions-key": import.meta.env.AZURE_FUNCTIONS_KEY,
+        "x-functions-key": import.meta.env.AZURE_FUNCTIONS_KEY, 
     },
 })
     .then((response) => {
