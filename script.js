@@ -39,11 +39,11 @@ const products = [
         id: 4,
         category: "boilers",
         title: "Electric Boilers",
-        image: "images/ElectricBoiler.jpg",
+        image: "images/Electric_Boiler.jpg",
         price: 800,
         delivery: "5-7 days",
-        commercial: "Maintain optimal humidity levels for healthy plant growth.",
-        lineText: "Reduces mold and mildew.",
+        commercial: "Heat your greenhouse using an electric Boiler",
+        lineText: "Using the Electric Boiler in combination with CHP",
         articleCode: "DH-5678",
         tax: 10
     },// Add more product objects here...
