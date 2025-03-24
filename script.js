@@ -15,7 +15,7 @@ const products = [
         id: 2,
         category: "dehumidification",
         title: "De-Humidification",
-        image: "images/dehumidification.jpg",
+        image: "images/HortiCooler.jpg",
         price: 800,
         delivery: "5-7 days",
         commercial: "Maintain optimal humidity levels for healthy plant growth.",
