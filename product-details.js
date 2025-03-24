@@ -12,7 +12,8 @@ if (!productId) {
 
 fetch(`/api/getProduct?id=${productId}`, { 
     headers: {
-        "x-functions-key": import.meta.env.AZURE_FUNCTIONS_KEY, 
+        "x-functions-key": window.AZURE_FUNCTIONS_KEY, 
+        
     },
 })
     .then((response) => {
