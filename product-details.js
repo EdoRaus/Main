@@ -1,8 +1,6 @@
 console.log("product-details.js loaded");
 
 const urlParams = new URLSearchParams(window.location.search);
-console.log("URL Parameters:", urlParams); // Added for debugging
-
 const productId = urlParams.get("id");
 
 console.log("Product ID:", productId);
@@ -14,7 +12,7 @@ if (!productId) {
 
 fetch(`/api/getProduct?id=${productId}`, {
     headers: {
-        "x-functions-key": window.AZURE_FUNCTIONS_KEY,
+        "x-functions-key": window.AZURE_FUNCTIONS_KEY, // Add this line
     },
 })
     .then((response) => {
@@ -25,10 +23,9 @@ fetch(`/api/getProduct?id=${productId}`, {
         console.log("Product Data:", product);
 
         const productDetailsDiv = document.getElementById("product-details");
-        productDetailsDiv.innerHTML = `<pre>${JSON.stringify(product, null, 2)}</pre>`; // Display API data directly
+        productDetailsDiv.innerHTML = `<pre>${JSON.stringify(product, null, 2)}</pre>`;
     })
     .catch((error) => {
         console.error("Error fetching product:", error);
-        document.getElementById("product-details").innerHTML =
-            "<p>Error fetching product details.</p>";
+        document.getElementById("product-details").innerHTML = "<p>Error fetching product details.</p>";
     });
