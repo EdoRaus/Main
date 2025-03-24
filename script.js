@@ -3,7 +3,7 @@ const products = [
         id: 1,
         category: "growlights",
         title: "Growlights",
-        image: "images/GrowLights.jpg",
+        image: "images/GrowLight.jpg",
         price: 1200,
         delivery: "7-10 days",
         commercial: "High-efficiency LED grow lights for optimal plant growth.",
