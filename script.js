@@ -23,7 +23,30 @@ const products = [
         articleCode: "DH-5678",
         tax: 10
     },
-    // Add more product objects here...
+  {
+        id: 3,
+        category: "growlights",
+        title: "LED Production Lights",
+        image: "images/ProductionLED.jpg",
+        price: 800,
+        delivery: "5-7 days",
+        commercial: "Maintain optimal humidity levels for healthy plant growth.",
+        lineText: "Reduces mold and mildew.",
+        articleCode: "DH-5678",
+        tax: 10
+    }, 
+        {
+        id: 4,
+        category: "boilers",
+        title: "Electric Boilers",
+        image: "images/ElectricBoiler.jpg",
+        price: 800,
+        delivery: "5-7 days",
+        commercial: "Maintain optimal humidity levels for healthy plant growth.",
+        lineText: "Reduces mold and mildew.",
+        articleCode: "DH-5678",
+        tax: 10
+    },// Add more product objects here...
 ];
 
 const gridContainer = document.querySelector('.grid-container');
