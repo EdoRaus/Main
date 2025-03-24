@@ -1,6 +1,8 @@
 console.log("product-details.js loaded");
 
 const urlParams = new URLSearchParams(window.location.search);
+console.log("URL Parameters:", urlParams); // Added for debugging
+
 const productId = urlParams.get("id");
 
 console.log("Product ID:", productId);
@@ -10,10 +12,9 @@ if (!productId) {
     throw new Error("Product ID not found.");
 }
 
-fetch(`/api/getProduct?id=${productId}`, { 
+fetch(`/api/getProduct?id=${productId}`, {
     headers: {
-        "x-functions-key": window.AZURE_FUNCTIONS_KEY, 
-        
+        "x-functions-key": window.AZURE_FUNCTIONS_KEY,
     },
 })
     .then((response) => {
