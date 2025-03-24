@@ -1,10 +1,32 @@
 console.log("product-details.js loaded");
 
-const productDetailsDiv = document.getElementById("product-details");
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
 
-if (productDetailsDiv) {
-    productDetailsDiv.innerHTML = "<h1>Test Product Details</h1>";
-    console.log("product details div updated");
-} else {
-    console.log("product details div not found");
+console.log("Product ID:", productId);
+
+if (!productId) {
+    document.getElementById("product-details").innerHTML = "<p>Product ID not found.</p>";
+    throw new Error("Product ID not found.");
 }
+
+fetch(`/api/getProduct?id=${productId}`, { // Replace with your actual API URL
+    headers: {
+        "x-functions-key": import.meta.env.AZURE_FUNCTIONS_KEY,
+    },
+})
+    .then((response) => {
+        console.log("API Response:", response);
+        return response.json();
+    })
+    .then((product) => {
+        console.log("Product Data:", product);
+
+        const productDetailsDiv = document.getElementById("product-details");
+        productDetailsDiv.innerHTML = `<pre>${JSON.stringify(product, null, 2)}</pre>`; // Display API data directly
+    })
+    .catch((error) => {
+        console.error("Error fetching product:", error);
+        document.getElementById("product-details").innerHTML =
+            "<p>Error fetching product details.</p>";
+    });
