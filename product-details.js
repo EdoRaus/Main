@@ -9,7 +9,7 @@ if (!productId) {
 }
 
 // Vul hier uw echte subscription key in (alleen voor testomgeving!)
-const SUBSCRIPTION_KEY = "dd9d3bb2828e463d92d2447dc6909ebc"; // <-- in quotes!
+const SUBSCRIPTION_KEY = "9d67ddba946c45e5b58f7d72c9940523"; // <-- in quotes!
 
 fetch(`https://dghstore.azure-api.net/dghproducts/getProduct?id=${productId}`, {
     headers: {
