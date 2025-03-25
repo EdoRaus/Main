@@ -1,4 +1,5 @@
 console.log("product-details.js loaded");
+console.log("Azure Functions Key:", window.AZURE_FUNCTIONS_KEY);
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
