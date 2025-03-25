@@ -9,11 +9,14 @@ if (!productId) {
 }
 
 // Vul hier uw echte subscription key in (alleen voor testomgeving!)
-const SUBSCRIPTION_KEY = "dd9d3bb2828e463d92d2447dc6909ebc";
+const SUBSCRIPTION_KEY = "dd9d3bb2828e463d92d2447dc6909ebc"; // <-- in quotes!
 
 fetch(`https://dghstore.azure-api.net/dghproducts/getProduct?id=${productId}`, {
     headers: {
-        "Ocp-Apim-Subscription-Key": "dd9d3bb2828e463d92d2447dc6909ebc"
+        "Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY
+    }
+})
+
     }
 })
     .then((response) => {
