@@ -1,30 +1,37 @@
 console.log("product-details.js loaded");
-console.log("Azure Functions Key:", window.AZURE_FUNCTIONS_KEY);
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
-
-console.log("Product ID:", productId);
 
 if (!productId) {
     document.getElementById("product-details").innerHTML = "<p>Product ID not found.</p>";
     throw new Error("Product ID not found.");
 }
 
-fetch(`/api/getProduct?id=${productId}`, {
+// Vul hier uw echte subscription key in (alleen voor testomgeving!)
+const SUBSCRIPTION_KEY = "dd9d3bb2828e463d92d2447dc6909ebc";
+
+fetch(`https://dghstore.azure-api.net/dghproducts/getProduct?id=${productId}`, {
     headers: {
-        "x-functions-key": window.AZURE_FUNCTIONS_KEY, // Add this line
-    },
+        "Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY
+    }
 })
     .then((response) => {
-        console.log("API Response:", response);
+        if (!response.ok) {
+            throw new Error("API responded with status " + response.status);
+        }
         return response.json();
     })
     .then((product) => {
-        console.log("Product Data:", product);
-
         const productDetailsDiv = document.getElementById("product-details");
-        productDetailsDiv.innerHTML = `<pre>${JSON.stringify(product, null, 2)}</pre>`;
+        productDetailsDiv.innerHTML = `
+            <h2>${product.title}</h2>
+            <img src="${product.image}" alt="${product.title}" style="max-width: 300px;"><br><br>
+            <p><strong>Description:</strong> ${product.description}</p>
+            <p><strong>Price:</strong> $${product.price}</p>
+            <p><strong>Article:</strong> ${product.articleCode || 'N/A'}</p>
+            <p><strong>Tax:</strong> ${product.tax || 'N/A'}%</p>
+        `;
     })
     .catch((error) => {
         console.error("Error fetching product:", error);
