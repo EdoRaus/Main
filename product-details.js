@@ -4,7 +4,7 @@ const productId = urlParams.get("id");
 console.log("Product ID from URL:", productId);
 
 // ✅ Correcte subscription key hier
-const SUBSCRIPTION_KEY = "9d67ddba946c45e5b58f7d72c9940523";
+const SUBSCRIPTION_KEY = "9d67ddba946c45e5b58f7d72c9940523"; // Vul hier uw geldige key in
 
 fetch(`https://dghstore.azure-api.net/dghproducts/getProduct?id=${productId}`, {
   method: "GET",
