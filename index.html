@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Horticultural Solutions</title>
-    <link rel="stylesheet" href="style.css"> 
+  <title>Test API Call</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            </div>
-    </header>
-    <section class="hero">
-        <div class="container">
-            <h1>Maximize Your Yield with Cutting-Edge Horticultural Solutions</h1>
-            <p>Sustainable and efficient growing technologies for the future.</p>
-            <a href="#products" class="cta-button">Explore Our Products</a>
-        </div>
-    </section>
-    <section id="products" class="products-grid">
-        <div class="container">
-            <div class="grid-container">
-                </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            </div>
-    </footer>
-    <script src="script.js"></script>
+  <h2>Product Info</h2>
+  <pre id="output">Loading...</pre>
+
+  <script>
+    const productId = 1;
+    const subscriptionKey = "9d67ddba946c45e5b58f7d72c9940523"; // web client access
+
+    fetch(`https://dghstore.azure-api.net/dghproducts/getProduct?id=${productId}`, {
+      headers: {
+        "Ocp-Apim-Subscription-Key": subscriptionKey
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("API Error: " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      document.getElementById("output").textContent = error.message;
+    });
+  </script>
 </body>
 </html>
